@@ -1,0 +1,57 @@
+schema: spec-driven
+
+context: |
+  Langue : rédiger TOUS les artefacts (proposal, design, specs, tasks) en français.
+  Exception : conserver en anglais les marqueurs structurels parsés par l'outillage OpenSpec —
+  en-têtes de delta (## ADDED/MODIFIED/REMOVED/RENAMED Requirements), préfixes
+  "### Requirement:" / "#### Scenario:", mots-clés **WHEN**/**THEN**/**AND** et SHALL/SHALL NOT,
+  ainsi que le format des cases à cocher "- [ ] X.Y".
+
+  Produit : PacMac, jeu d'arcade original de la famille des jeux de labyrinthe et de poursuite, en
+  web app, projet perso non publié. Le joueur dirige Mac, un petit carré néon, dans un labyrinthe
+  semé de pastilles, poursuivi par quatre traqueurs aux comportements distincts ; un prisme
+  déclenche une surcharge pendant laquelle Mac peut capturer les traqueurs. Style arcade néon, sans
+  thème narratif. Labyrinthe, personnages, noms, valeurs, sons et visuels sont originaux : ne
+  reprendre ni le labyrinthe, ni les personnages, ni les noms, ni les sons, ni la musique, ni la
+  marque d'un jeu existant. Mécaniques proches du genre (pastilles, bonus qui retourne la chasse,
+  tunnel latéral, nid central, alternance patrouille/traque), sans mécanique inédite. Contenu du
+  jeu (labyrinthe, personnages, scores, table des niveaux) décrit dans docs/jeu.md.
+
+  Partie solo, un seul labyrinthe en V1, niveaux sans fin de difficulté croissante, 3 vies, vies
+  supplémentaires au score, meilleurs scores conservés dans le navigateur. Interface en français
+  en dur, pas d'i18n.
+
+  Rendu : Canvas 2D, style néon (fond sombre, tracés lumineux avec halo), animations fluides à
+  60 images par seconde, sans bibliothèque de rendu.
+
+  Écrans cibles : téléphone en portrait (à partir de 360 × 640) joué au doigt par glissements, et
+  ordinateur joué au clavier. Le labyrinthe est plus haut que large et se met à l'échelle de
+  l'écran. La tablette et le paysage restent jouables sans adaptation dédiée et ne doivent jamais
+  contraindre la conception de l'interface.
+
+  Stack : Vite + Vue 3 SPA (`<script setup lang="ts">`, Composition API), TypeScript strict,
+  Canvas 2D, Web Audio pour les sons synthétisés, Tailwind CSS + composants maison pour le HUD et
+  les écrans, Vitest. Gestionnaire de paquets : pnpm ; ne jamais lancer d'install, l'utilisateur
+  les fait lui-même.
+
+  Architecture : moteur de jeu pur et sérialisable (aucune dépendance à Vue ni au DOM), à pas de
+  temps fixe (60 ticks par seconde), déterministe (générateur à graine stocké dans l'état, aucune
+  lecture de l'horloge), testé en TDD ; le rendu Canvas, le son et l'interface consomment son état
+  et ses événements sans dupliquer de règle.
+
+  Conventions de code : identifiants et code en anglais ; aucun commentaire dans le code
+  (seule exception : JSDoc sur l'API exportée) ; `type` plutôt qu'`interface` ; pas d'`any`.
+
+rules:
+  proposal:
+    - Rédiger en français (sauf marqueurs structurels OpenSpec)
+    - Inclure une section « Hors périmètre » listant ce qui est reporté à un change ultérieur
+  design:
+    - Rédiger en français (sauf marqueurs structurels OpenSpec)
+  specs:
+    - Rédiger le contenu en français ; garder les en-têtes de delta, "Requirement:"/"Scenario:", WHEN/THEN et SHALL en anglais
+    - Les scénarios doivent être directement traduisibles en tests Vitest
+  tasks:
+    - Rédiger les descriptions de tâches en français ; conserver le format "- [ ] X.Y"
+    - Ordonner en TDD pour la logique de jeu, le test précède l'implémentation
+    - Toute tâche nécessitant un `pnpm install` / `pnpm add` le signale explicitement pour que l'utilisateur le lance

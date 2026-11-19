@@ -1,0 +1,50 @@
+@import 'tailwindcss';
+
+@theme {
+  --color-night: #07060f;
+  --color-panel: #110f22;
+  --color-mac: #3df2ff;
+  --color-hound: #ff3b5c;
+  --color-cutter: #ff4fd8;
+  --color-warden: #ffa23b;
+  --color-prowler: #4dff88;
+  --color-wall: #8b5cff;
+  --color-pellet: #ffd9f2;
+  --font-sans: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+}
+
+:root {
+  color-scheme: dark;
+}
+
+html,
+body,
+#app {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--color-night);
+  color: #f4f1ff;
+  font-family: var(--font-sans);
+  font-variant-numeric: tabular-nums;
+  overscroll-behavior: none;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.neon-title {
+  color: var(--color-mac);
+  text-shadow:
+    0 0 6px var(--color-mac),
+    0 0 18px color-mix(in srgb, var(--color-mac) 60%, transparent);
+}
+
+.neon-button {
+  border: 2px solid var(--color-mac);
+  color: var(--color-mac);
+  box-shadow: 0 0 10px color-mix(in srgb, var(--color-mac) 45%, transparent);
+}

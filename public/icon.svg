@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <title>PacMac</title>
+  <defs>
+    <radialGradient id="aura" cx="50%" cy="50%" r="50%">
+      <stop offset="0" stop-color="#3df2ff" stop-opacity="0.35" />
+      <stop offset="0.6" stop-color="#3df2ff" stop-opacity="0.08" />
+      <stop offset="1" stop-color="#3df2ff" stop-opacity="0" />
+    </radialGradient>
+    <filter id="glow" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur stdDeviation="14" result="blur" />
+      <feMerge>
+        <feMergeNode in="blur" />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+  </defs>
+  <rect width="512" height="512" fill="#07060f" />
+  <circle cx="256" cy="256" r="200" fill="url(#aura)" />
+  <rect x="136" y="136" width="240" height="240" rx="66" fill="#3df2ff" filter="url(#glow)" />
+  <rect x="190" y="196" width="30" height="48" rx="6" fill="#07060f" />
+  <rect x="292" y="196" width="30" height="48" rx="6" fill="#07060f" />
+  <rect x="202" y="282" width="108" height="26" rx="8" fill="#07060f" />
+  <circle cx="110" cy="256" r="12" fill="#ffd9f2" />
+  <circle cx="402" cy="256" r="12" fill="#ffd9f2" />
+</svg>
